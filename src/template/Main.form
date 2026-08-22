@@ -132,6 +132,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BubbleSortMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BubbleSortActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="QuickSort">
@@ -149,6 +150,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MergeSortMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MergeSortActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="HeapSort">
@@ -157,6 +159,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="HeapSortMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HeapSortActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

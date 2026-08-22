@@ -4,6 +4,7 @@ import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Simuladores de algoritmos de ordenação
@@ -17,16 +18,18 @@ public class QuickSort extends EngineFrame {
     
     // Atributos 
     private int[] a;
+    private int numeroElementos;
     private List<EstadoOrdenacao> copias;
     private int copiaAtual;
     private double tempoParaMudar;
     private double contadorTempo;
     
     // Construtor
-    public QuickSort() {
+    public QuickSort( int numeroElementos ) {
         
         super( 800, 450, "Quick Sort", 60, true );
         setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        this.numeroElementos = numeroElementos;
         
     }
     
@@ -34,7 +37,8 @@ public class QuickSort extends EngineFrame {
     @Override
     public void create() {
         
-        a = new int[] {9, 5, 4, 1, 2, 7, 6, 8, 3, 10};
+        a = new int[ numeroElementos ];
+        gerarArray( a, numeroElementos );
         copias = new ArrayList<>();
         copiaAtual = 0;
         
@@ -80,13 +84,23 @@ public class QuickSort extends EngineFrame {
     }
     
     // Funções Secundárias
+    private void gerarArray( int[] a, int n ) {
+        Random random = new Random();
+        for( int i = 0; i < n; i++ ) {
+            a[i] = random.nextInt(99);
+        }
+    }
+    
     private void desenharEstadoOrdenacao( EstadoOrdenacao e  ){
         
         int[] a = e.a;
-        int tamanho = 30;
         int espacamento = 10;
         int iniX = 10;
         int iniY = getScreenHeight() - 10;
+        
+        int larguraDisponivel = getScreenWidth() - (iniX * 2);
+        int tamanho = (larguraDisponivel - (espacamento * (numeroElementos - 1))) / numeroElementos;
+        double escalaAltura = 3.5;
         
         for( int i = 0; i < a.length; i++ ) {
             int v = a[i];
@@ -101,17 +115,20 @@ public class QuickSort extends EngineFrame {
             
         }
         
-        desenharBolinhas( a, tamanho, 5, espacamento, iniX, iniY, e.inicio, Color.RED );
-        desenharBolinhas( a, tamanho, 15, espacamento, iniX, iniY, e.fim, Color.GREEN );
-        desenharBolinhas( a, tamanho, 25, espacamento, iniX, iniY, e.meio, Color.ORANGE );
+        desenharBolinhas( a, tamanho, escalaAltura, 5, espacamento, iniX, iniY, e.inicio, Color.RED );
+        desenharBolinhas( a, tamanho, escalaAltura, 15, espacamento, iniX, iniY, e.fim, Color.GREEN );
+        desenharBolinhas( a, tamanho, escalaAltura, 25, espacamento, iniX, iniY, e.meio, Color.ORANGE );
         
     }
     
-    private void desenharBolinhas( int[] a, int tamanho, int espaco, int espacamento, int iniX, int iniY, int variavel, Color cor ){
-        if( variavel >= 0 ) {
+    private void desenharBolinhas( int[] a, int tamanho, double escalaAltura, int espaco, int espacamento, int iniX, int iniY, int variavel, Color cor ){
+        if( variavel >= 0 && variavel < a.length ) {
+            
+            int alturaBarra = (int) (a[variavel] * escalaAltura);
+            
             fillCircle( 
                 iniX + variavel * (tamanho + espacamento) + tamanho / 2,
-                iniY - a[variavel] * tamanho - espaco,
+                iniY - alturaBarra - espaco,
                 5,
                 cor
             );

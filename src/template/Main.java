@@ -1,5 +1,7 @@
 package template;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author driog
@@ -8,6 +10,8 @@ public class Main extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Main.class.getName());
 
+    private int numeroElementos;
+    
     /**
      * Creates new form Main
      */
@@ -71,6 +75,7 @@ public class Main extends javax.swing.JFrame {
                 BubbleSortMouseClicked(evt);
             }
         });
+        BubbleSort.addActionListener(this::BubbleSortActionPerformed);
 
         QuickSort.setText("Quick Sort");
         QuickSort.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -86,6 +91,7 @@ public class Main extends javax.swing.JFrame {
                 MergeSortMouseClicked(evt);
             }
         });
+        MergeSort.addActionListener(this::MergeSortActionPerformed);
 
         HeapSort.setText("Heap Sort");
         HeapSort.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -93,6 +99,7 @@ public class Main extends javax.swing.JFrame {
                 HeapSortMouseClicked(evt);
             }
         });
+        HeapSort.addActionListener(this::HeapSortActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -148,40 +155,124 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SelectionSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectionSortActionPerformed
-        // TODO add your handling code here:
+        try{
+            String valor = JOptionPane.showInputDialog( "Quantidade de elementos (10 a 50): " );
+            int quantidade = Integer.parseInt( valor );
+            if( quantidade >= 10 && quantidade <= 100 ) {
+                numeroElementos = quantidade;
+                SelectionSort ss = new SelectionSort( numeroElementos );
+                ss.create();
+            } else {
+                JOptionPane.showMessageDialog( rootPane, "Digite um valor de 10 a 50" );
+            }
+        } catch ( NumberFormatException exc ) {
+            JOptionPane.showMessageDialog( rootPane, exc );
+        }
     }//GEN-LAST:event_SelectionSortActionPerformed
 
     private void InsertionSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertionSortActionPerformed
-        // TODO add your handling code here:
+        try{
+            String valor = JOptionPane.showInputDialog( "Quantidade de elementos (10 a 50): " );
+            int quantidade = Integer.parseInt( valor );
+            if( quantidade >= 10 && quantidade <= 50 ) {
+                numeroElementos = quantidade;
+                InsertionSort is = new InsertionSort( numeroElementos );
+                is.create();
+            } else {
+                JOptionPane.showMessageDialog( rootPane, "Digite um valor de 10 a 50" );
+            }
+        } catch ( NumberFormatException exc ) {
+            JOptionPane.showMessageDialog( rootPane, exc );
+        }
     }//GEN-LAST:event_InsertionSortActionPerformed
 
     private void QuickSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuickSortActionPerformed
-        // TODO add your handling code here:
+        try{
+            String valor = JOptionPane.showInputDialog( "Quantidade de elementos (10 a 50): " );
+            int quantidade = Integer.parseInt( valor );
+            if( quantidade >= 10 && quantidade <= 50 ) {
+                numeroElementos = quantidade;
+                QuickSort qs = new QuickSort( numeroElementos );
+                qs.create();
+            } else {
+                JOptionPane.showMessageDialog( rootPane, "Digite um valor de 10 a 50" );
+            }
+        } catch ( NumberFormatException exc ) {
+            JOptionPane.showMessageDialog( rootPane, exc );
+        }
     }//GEN-LAST:event_QuickSortActionPerformed
 
     private void SelectionSortMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectionSortMouseClicked
-        SelectionSort ss = new SelectionSort();
+        
     }//GEN-LAST:event_SelectionSortMouseClicked
 
     private void QuickSortMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QuickSortMouseClicked
-        QuickSort qs = new QuickSort();
+        
     }//GEN-LAST:event_QuickSortMouseClicked
 
     private void InsertionSortMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertionSortMouseClicked
-        InsertionSort is = new InsertionSort();
+        
     }//GEN-LAST:event_InsertionSortMouseClicked
 
     private void BubbleSortMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BubbleSortMouseClicked
-        BubbleSort bs = new BubbleSort();
+        
     }//GEN-LAST:event_BubbleSortMouseClicked
 
     private void MergeSortMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MergeSortMouseClicked
-        MergeSort ms = new MergeSort();
+       
     }//GEN-LAST:event_MergeSortMouseClicked
 
     private void HeapSortMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeapSortMouseClicked
-        HeapSort hs = new HeapSort();
+        
     }//GEN-LAST:event_HeapSortMouseClicked
+
+    private void BubbleSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BubbleSortActionPerformed
+        try{
+            String valor = JOptionPane.showInputDialog( "Quantidade de elementos (10 a 50): " );
+            int quantidade = Integer.parseInt( valor );
+            if( quantidade >= 10 && quantidade <= 50 ) {
+                numeroElementos = quantidade;
+                BubbleSort bs = new BubbleSort( numeroElementos );
+                bs.create();
+            } else {
+                JOptionPane.showMessageDialog( rootPane, "Digite um valor de 10 a 50" );
+            }
+        } catch ( NumberFormatException exc ) {
+            JOptionPane.showMessageDialog( rootPane, exc );
+        }
+    }//GEN-LAST:event_BubbleSortActionPerformed
+
+    private void MergeSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MergeSortActionPerformed
+        try{
+            String valor = JOptionPane.showInputDialog( "Quantidade de elementos (10 a 50): " );
+            int quantidade = Integer.parseInt( valor );
+            if( quantidade >= 10 && quantidade <= 50 ) {
+                numeroElementos = quantidade;
+                MergeSort ms = new MergeSort( numeroElementos );
+                ms.create();
+            } else {
+                JOptionPane.showMessageDialog( rootPane, "Digite um valor de 10 a 50" );
+            }
+        } catch ( NumberFormatException exc ) {
+            JOptionPane.showMessageDialog( rootPane, exc );
+        }
+    }//GEN-LAST:event_MergeSortActionPerformed
+
+    private void HeapSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HeapSortActionPerformed
+        try{
+            String valor = JOptionPane.showInputDialog( "Quantidade de elementos (10 a 50): " );
+            int quantidade = Integer.parseInt( valor );
+            if( quantidade >= 10 && quantidade <= 50 ) {
+                numeroElementos = quantidade;
+                HeapSort hs = new HeapSort( numeroElementos );
+                hs.create();
+            } else {
+                JOptionPane.showMessageDialog( rootPane, "Digite um valor de 10 a 50" );
+            }
+        } catch ( NumberFormatException exc ) {
+            JOptionPane.showMessageDialog( rootPane, exc );
+        }
+    }//GEN-LAST:event_HeapSortActionPerformed
 
     /**
      * @param args the command line arguments

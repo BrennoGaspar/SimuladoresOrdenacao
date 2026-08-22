@@ -4,6 +4,7 @@ import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Simuladores de algoritmos de ordenação
@@ -17,15 +18,17 @@ public class SelectionSort extends EngineFrame {
     
     // Atributos 
     private int[] a;
+    private int numeroElementos;
     private List<EstadoOrdenacao> copias;
     private int copiaAtual;
     private double tempoParaMudar;
     private double contadorTempo;
     
     // Construtor
-    public SelectionSort() {
+    public SelectionSort( int numeroElementos ) {
         
         super( 800, 450, "Selection Sort", 60, true );
+        this.numeroElementos = numeroElementos;
         setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         
     }
@@ -34,7 +37,8 @@ public class SelectionSort extends EngineFrame {
     @Override
     public void create() {
         
-        a = new int[] {9, 5, 4, 1, 2, 7, 6, 8, 3, 10};
+        a = new int[ numeroElementos ];
+        gerarArray( a, numeroElementos );
         copias = new ArrayList<>();
         copiaAtual = 0;
         
@@ -80,17 +84,27 @@ public class SelectionSort extends EngineFrame {
     }
     
     // Funções Secundárias
+    private void gerarArray( int[] a, int n ) {
+        Random random = new Random();
+        for( int i = 0; i < n; i++ ) {
+            a[i] = random.nextInt(99);
+        }
+    }
+    
     private void desenharEstadoOrdenacao( EstadoOrdenacao e ){
         
         int[] a = e.a;
-        int tamanho = 30;
-        int espacamento = 10;
+        int espacamento = 4;
         int iniX = 10;
         int iniY = getScreenHeight() - 10;
         
+        int larguraDisponivel = getScreenWidth() - (iniX * 2);
+        int tamanho = (larguraDisponivel - (espacamento * (numeroElementos - 1))) / numeroElementos;
+        double escalaAltura = 3.5;
+        
         for( int i = 0; i < a.length; i++ ) {
             int v = a[i];
-            int altura = v * tamanho;
+            int altura = (int) (v * escalaAltura);
             fillRectangle( 
                 iniX + i * (tamanho + espacamento), // x
                 iniY - altura, // y
@@ -101,17 +115,20 @@ public class SelectionSort extends EngineFrame {
             
         }
         
-        desenharBolinhas( a, tamanho, 5,  espacamento, iniX, iniY, e.i, Color.RED );
-        desenharBolinhas( a, tamanho, 15, espacamento, iniX, iniY, e.j, Color.GREEN );
-        desenharBolinhas( a, tamanho, 25, espacamento, iniX, iniY, e.menor, Color.ORANGE );
+        desenharBolinhas( a, tamanho, escalaAltura, 5,  espacamento, iniX, iniY, e.i, Color.RED );
+        desenharBolinhas( a, tamanho, escalaAltura, 15, espacamento, iniX, iniY, e.j, Color.GREEN );
+        desenharBolinhas( a, tamanho, escalaAltura, 25, espacamento, iniX, iniY, e.menor, Color.ORANGE );
         
     }
     
-    private void desenharBolinhas( int[] a, int tamanho, int espaco, int espacamento, int iniX, int iniY, int variavel, Color cor ){
-        if( variavel >= 0 ) {
+    private void desenharBolinhas( int[] a, int tamanho, double escalaAltura, int espaco, int espacamento, int iniX, int iniY, int variavel, Color cor ){
+        if( variavel >= 0 && variavel < a.length ) {
+            
+            int alturaBarra = (int) (a[variavel] * escalaAltura);
+            
             fillCircle( 
                 iniX + variavel * (tamanho + espacamento) + tamanho / 2,
-                iniY - a[variavel] * tamanho - espaco,
+                iniY - alturaBarra - espaco,
                 5,
                 cor
             );
@@ -157,10 +174,9 @@ public class SelectionSort extends EngineFrame {
     
     public void resetar (){
         
-        a = new int[] {9, 5, 4, 1, 2, 7, 6, 8, 3, 10};
+        gerarArray( a, numeroElementos );
         copias = new ArrayList<>();
         copiaAtual = 0;
-        tempoParaMudar = 0.2;
         contadorTempo  = 0;
         selectionSort( a, copias );
         
