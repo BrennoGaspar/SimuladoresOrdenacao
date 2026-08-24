@@ -124,10 +124,10 @@ public class BubbleSort extends EngineFrame {
         }
     }
     
-    private void desenharEstadoOrdenacao( EstadoOrdenacao e  ){
+    private void desenharEstadoOrdenacao( EstadoOrdenacao e ){
         
         int[] a = e.a;
-        int espacamento = 10;
+        int espacamento = 4;
         int iniX = 10;
         int iniY = getScreenHeight() - 10;
         
@@ -137,7 +137,7 @@ public class BubbleSort extends EngineFrame {
         
         for( int i = 0; i < a.length; i++ ) {
             int v = a[i];
-            int altura = v * tamanho;
+            int altura = (int) (v * escalaAltura);
             fillRectangle( 
                 iniX + i * (tamanho + espacamento), // x
                 iniY - altura, // y
@@ -154,10 +154,9 @@ public class BubbleSort extends EngineFrame {
     }
     
     private void desenharBolinhas( int[] a, int tamanho, double escalaAltura, int espaco, int espacamento, int iniX, int iniY, int variavel, Color cor ){
+        
         if( variavel >= 0 && variavel < a.length ) {
-            
             int alturaBarra = (int) (a[variavel] * escalaAltura);
-            
             fillCircle( 
                 iniX + variavel * (tamanho + espacamento) + tamanho / 2,
                 iniY - alturaBarra - espaco,
@@ -165,6 +164,7 @@ public class BubbleSort extends EngineFrame {
                 cor
             );
         }
+        
     }
     
     private void BubbleSort ( int[] a, List<EstadoOrdenacao> copias ) {

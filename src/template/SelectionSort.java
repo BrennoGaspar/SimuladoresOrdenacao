@@ -155,10 +155,9 @@ public class SelectionSort extends EngineFrame {
     }
     
     private void desenharBolinhas( int[] a, int tamanho, double escalaAltura, int espaco, int espacamento, int iniX, int iniY, int variavel, Color cor ){
+        
         if( variavel >= 0 && variavel < a.length ) {
-            
             int alturaBarra = (int) (a[variavel] * escalaAltura);
-            
             fillCircle( 
                 iniX + variavel * (tamanho + espacamento) + tamanho / 2,
                 iniY - alturaBarra - espaco,
@@ -166,6 +165,7 @@ public class SelectionSort extends EngineFrame {
                 cor
             );
         }
+        
     }
     
     private void selectionSort ( int[] a, List<EstadoOrdenacao> copias ) {
