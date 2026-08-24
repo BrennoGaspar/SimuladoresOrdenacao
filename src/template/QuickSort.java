@@ -1,10 +1,16 @@
 package template;
 
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  * Simuladores de algoritmos de ordenação
@@ -23,6 +29,9 @@ public class QuickSort extends EngineFrame {
     private int copiaAtual;
     private double tempoParaMudar;
     private double contadorTempo;
+    private JSlider slide;
+    private JLabel label;
+    private double tempoRodando;
     
     // Construtor
     public QuickSort( int numeroElementos ) {
@@ -30,6 +39,36 @@ public class QuickSort extends EngineFrame {
         super( 800, 450, "Quick Sort", 60, true );
         setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         this.numeroElementos = numeroElementos;
+        sliderVelocidade();
+        
+    }
+    
+    private void sliderVelocidade() {
+        
+        JPanel painelControles = new JPanel();
+        
+        slide = new JSlider( 5, 500, 50 );
+        slide.setPaintLabels( false );
+        slide.setPaintTicks( true );
+        
+        label = new JLabel( "Velocidade: 1.0x" );
+        
+        slide.addChangeListener( new ChangeListener() {
+            @Override
+            public void stateChanged( ChangeEvent e ) {
+                int val = slide.getValue();
+                
+                tempoParaMudar = 20.0 / val;
+                
+                double fatorVelocidade = val / 50.0;
+                label.setText( String.format( "Velocidade: %.1fx", fatorVelocidade ) );
+            }
+        });
+        
+        painelControles.add( slide );
+        painelControles.add( label );
+        
+        getContentPane().add( painelControles, BorderLayout.SOUTH );
         
     }
     
@@ -57,20 +96,13 @@ public class QuickSort extends EngineFrame {
         if( contadorTempo >= tempoParaMudar ) {
             if( copiaAtual < copias.size()-1 ) {
                 copiaAtual++;
+                tempoRodando += contadorTempo;
             }
             contadorTempo = 0;
         }
         
         if( isKeyPressed( KEY_R ) ) {
             resetar();
-        }
-        
-        if( isKeyPressed( KEY_E ) ) {
-            tempoParaMudar -= 0.1;
-        }
-        
-        if( isKeyPressed( KEY_Q ) ) {
-            tempoParaMudar += 0.1;
         }
         
     }
@@ -80,6 +112,7 @@ public class QuickSort extends EngineFrame {
         
         clearBackground( WHITE );
         desenharEstadoOrdenacao( copias.get(copiaAtual) );
+        drawText( String.format( "Tempo rodando: %.2f", tempoRodando ), 10, 10, Color.BLACK );
         
     }
     
@@ -210,6 +243,7 @@ public class QuickSort extends EngineFrame {
         copiaAtual = 0;
         tempoParaMudar = 0.2;
         contadorTempo  = 0;
+        tempoRodando = 0;
         quickSort( a, 0, a.length - 1, copias );
         
     }
