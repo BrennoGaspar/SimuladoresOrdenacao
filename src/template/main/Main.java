@@ -1,5 +1,11 @@
-package template;
+package template.main;
 
+import template.algoritmos.HeapSort;
+import template.algoritmos.BubbleSort;
+import template.algoritmos.SelectionSort;
+import template.algoritmos.MergeSort;
+import template.algoritmos.InsertionSort;
+import template.algoritmos.QuickSort;
 import javax.swing.JOptionPane;
 
 /**
@@ -43,7 +49,6 @@ public class Main extends javax.swing.JFrame {
         setTitle("Simuladores Ordenação");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocation(new java.awt.Point(0, 0));
-        setPreferredSize(new java.awt.Dimension(800, 450));
         setResizable(false);
 
         Titulo.setText("Simuladores de Ordenação de Arrays");

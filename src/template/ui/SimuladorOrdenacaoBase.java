@@ -1,6 +1,8 @@
-package template;
+package template.ui;
 
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
+import static br.com.davidbuzatto.jsge.core.engine.EngineFrame.KEY_R;
+import static br.com.davidbuzatto.jsge.core.engine.EngineFrame.WHITE;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -13,16 +15,12 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
- * Simuladores de algoritmos de ordenação
- * 
- * @author Brenno Gaspar Pinto & Victor Altran Soares
+ *
+ * @author driog
  */
-public class ShellSort extends EngineFrame {
+public abstract class SimuladorOrdenacaoBase extends EngineFrame {
     
-    // Classe Interna
-    private record EstadoOrdenacao( int[] a, int i, int j, int h ){};
-    
-    // Atributos 
+    // Atributos
     private int[] a;
     private int numeroElementos;
     private List<EstadoOrdenacao> copias;
@@ -34,15 +32,16 @@ public class ShellSort extends EngineFrame {
     private double tempoRodando;
     
     // Construtor
-    public ShellSort( int numeroElementos ) {
+    public SimuladorOrdenacaoBase ( int numeroElementos, String nome ) {
         
-        super( 800, 450, "Shell Sort", 60, true );
-        setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        super( 800, 450, nome, 60, true );
         this.numeroElementos = numeroElementos;
+        setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         sliderVelocidade();
         
     }
     
+    // Slider de Controle de Velocidade
     private void sliderVelocidade() {
         
         JPanel painelControles = new JPanel();
@@ -61,8 +60,8 @@ public class ShellSort extends EngineFrame {
                 tempoParaMudar = 20.0 / val;
                 
                 double fatorVelocidade = val / 50.0;
-                label.setText( String.format( "Velocidade: %.1fx", fatorVelocidade ) );
-            }
+                label.setText( String.format( "Velocidade: %.1fx", fatorVelocidade ) );                
+            } 
         });
         
         painelControles.add( slide );
@@ -84,7 +83,7 @@ public class ShellSort extends EngineFrame {
         tempoParaMudar = 1;
         contadorTempo  = 0;
         
-        ShellSort(a, copias );
+        executarAlgoritmo( a, copias );
         
     }
     
@@ -116,7 +115,22 @@ public class ShellSort extends EngineFrame {
         
     }
     
-    // Funções Secundárias
+    // Funções secundárias
+    protected abstract void executarAlgoritmo( int[] a, List<EstadoOrdenacao> copias );
+    
+    protected abstract void salvarEstadoOrdenacao ( int[] origem, List<EstadoOrdenacao> copias, int posI, int posJ, int posMenor );
+    
+    public void resetar (){
+        
+        gerarArray( a, numeroElementos );
+        copias = new ArrayList<>();
+        copiaAtual = 0;
+        contadorTempo  = 0;
+        tempoRodando = 0;
+        executarAlgoritmo( a, copias );
+        
+    }
+    
     private void gerarArray( int[] a, int n ) {
         Random random = new Random();
         for( int i = 0; i < n; i++ ) {
@@ -124,7 +138,7 @@ public class ShellSort extends EngineFrame {
         }
     }
     
-   private void desenharEstadoOrdenacao( EstadoOrdenacao e ){
+    private void desenharEstadoOrdenacao( EstadoOrdenacao e ){
         
         int[] a = e.a;
         int espacamento = 4;
@@ -148,9 +162,9 @@ public class ShellSort extends EngineFrame {
             
         }
         
-        desenharBolinhas( a, tamanho, escalaAltura, 5, espacamento, iniX, iniY, e.i, Color.RED );
-        desenharBolinhas( a, tamanho, escalaAltura, 15, espacamento, iniX, iniY, e.j, Color.GREEN );
-        desenharBolinhas( a, tamanho, escalaAltura, 25, espacamento, iniX, iniY, e.h, Color.ORANGE );
+        desenharBolinhas( a, tamanho, escalaAltura, 5,  espacamento, iniX, iniY, e.getI(), Color.RED );
+        desenharBolinhas( a, tamanho, escalaAltura, 15, espacamento, iniX, iniY, e.getJ(), Color.GREEN );
+        desenharBolinhas( a, tamanho, escalaAltura, 25, espacamento, iniX, iniY, e.getEspecial(), Color.ORANGE );
         
     }
     
@@ -165,59 +179,6 @@ public class ShellSort extends EngineFrame {
                 cor
             );
         }
-        
-    }
-    
-    private void ShellSort ( int[] a, List<EstadoOrdenacao> copias ) {
-        
-        salvarEstadoOrdenacao( a, copias, -1, -1, -1 );
-        
-        int h = 1;
-        while( h < a.length / 3 ) {
-            h = 3 * h + 1;
-        }
-        while( h >= 1 ){
-            for( int i = h; i < a.length; i++ ) {
-                int j = i;
-                while( j >= h && a[j-h] > a[j] ) {
-                    trocar( a, j-h, j );
-                    salvarEstadoOrdenacao( a, copias, i, j, h );
-                    j = j - h;
-                }
-            }
-            h = h / 3;
-        }
-        
-        salvarEstadoOrdenacao( a, copias, -1, -1, -1 );
-        
-    }
-    
-    private void trocar ( int[]a, int i, int j ) {
-        
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-        
-    }
-    
-    private void salvarEstadoOrdenacao ( int[] origem, List<EstadoOrdenacao> copias, int posI, int posJ, int posH ) {
-        
-        int[] copia = new int[ origem.length ];
-        System.arraycopy( origem, 0, copia, 0, origem.length );
-        EstadoOrdenacao estadoCopia = new EstadoOrdenacao( copia, posI, posJ, posH );
-        copias.add( estadoCopia );
-        
-    }
-    
-    public void resetar (){
-        
-        a = new int[] {9, 5, 4, 1, 2, 7, 6, 8, 3, 10};
-        copias = new ArrayList<>();
-        copiaAtual = 0;
-        tempoParaMudar = 0.2;
-        contadorTempo  = 0;
-        tempoRodando = 0;
-        ShellSort( a, copias );
         
     }
     
