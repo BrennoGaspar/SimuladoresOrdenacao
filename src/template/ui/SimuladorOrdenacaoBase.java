@@ -3,6 +3,7 @@ package template.ui;
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
 import static br.com.davidbuzatto.jsge.core.engine.EngineFrame.KEY_R;
 import static br.com.davidbuzatto.jsge.core.engine.EngineFrame.WHITE;
+import static br.com.davidbuzatto.jsge.core.engine.EngineFrame.KEY_SPACE;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -29,6 +30,10 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
     private double contadorTempo;
     private JSlider slide;
     private JLabel label;
+    private JLabel lblStatus;
+    private final Object pauseLock = new Object();
+    private boolean estaPausado = false;
+    private boolean espacoPressionado = false;
     private double tempoRodando;
     
     // Construtor
@@ -41,12 +46,27 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
         
     }
     
-    // Slider de Controle de Velocidade
+    
+    // Lógica do pause
+    public void ativarPause(){
+            estaPausado = !estaPausado;
+            
+            if(estaPausado){
+                lblStatus.setText("| Pausado (Aperte ESPACO para Continuar)");
+            }else{
+                lblStatus.setText("| Rodando (Aperte ESPACO para Pausar)");
+            }
+    }
+    
+    
+    // Slider de Controle de Velocidade 
     private void sliderVelocidade() {
         
         JPanel painelControles = new JPanel();
         
         slide = new JSlider( 5, 500, 50 );
+        // fixing reset not working after changing the speed.
+        slide.setFocusable(false);
         slide.setPaintLabels( false );
         slide.setPaintTicks( true );
         
@@ -67,9 +87,16 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
         painelControles.add( slide );
         painelControles.add( label );
         
+        // Lógica do Botão
+        
+        lblStatus = new JLabel(" | [ESPACO]: Rodando (Aperte para Pausar)");
+        painelControles.add(lblStatus);
+          
         getContentPane().add( painelControles, BorderLayout.SOUTH );
         
     }
+    
+
     
     // Funções do JSGE
     @Override
@@ -90,6 +117,19 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
     @Override
     public void update( double delta ) {        
         
+        // Lógica Play/Pause 
+        if(isKeyPressed(KEY_SPACE)){
+            if( !espacoPressionado){
+                ativarPause();
+                espacoPressionado = true;
+            }
+        }else{
+            espacoPressionado = false;
+        }
+        
+        // Lógica de Animação
+        
+        if(!estaPausado){
         contadorTempo += delta;
         
         if( contadorTempo >= tempoParaMudar ) {
@@ -98,6 +138,7 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
                 tempoRodando += contadorTempo;
             }
             contadorTempo = 0;
+        }
         }
         
         if( isKeyPressed( KEY_R ) ) {
