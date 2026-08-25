@@ -52,12 +52,4 @@ public class SelectionSort extends SimuladorOrdenacaoBase {
         
     }
     
-    private void trocar ( int[]a, int i, int j ) {
-        
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-        
-    }
-    
 }
