@@ -31,7 +31,6 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
     private JSlider slide;
     private JLabel label;
     private JLabel lblStatus;
-    private final Object pauseLock = new Object();
     private boolean estaPausado = false;
     private boolean espacoPressionado = false;
     private double tempoRodando;
@@ -48,10 +47,10 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
     
     
     // Lógica do pause
-    public void ativarPause(){
+    private void ativarPause(){
             estaPausado = !estaPausado;
             
-            if(estaPausado){
+            if( estaPausado ){
                 lblStatus.setText("| Pausado (Aperte ESPACO para Continuar)");
             }else{
                 lblStatus.setText("| Rodando (Aperte ESPACO para Pausar)");
@@ -65,7 +64,7 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
         JPanel painelControles = new JPanel();
         
         slide = new JSlider( 5, 500, 50 );
-        // fixing reset not working after changing the speed.
+        // Arrumado erro de não funcionar o resetar() após mexer na velocidade
         slide.setFocusable(false);
         slide.setPaintLabels( false );
         slide.setPaintTicks( true );
@@ -118,8 +117,8 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
     public void update( double delta ) {        
         
         // Lógica Play/Pause 
-        if(isKeyPressed(KEY_SPACE)){
-            if( !espacoPressionado){
+        if( isKeyPressed(KEY_SPACE) ){
+            if( !espacoPressionado ){
                 ativarPause();
                 espacoPressionado = true;
             }
@@ -161,7 +160,7 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
     
     protected abstract void salvarEstadoOrdenacao ( int[] origem, List<EstadoOrdenacao> copias, int posI, int posJ, int posMenor );
     
-    public void resetar (){
+    private void resetar (){
         
         gerarArray( a, numeroElementos );
         copias = new ArrayList<>();
