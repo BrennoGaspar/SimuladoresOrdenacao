@@ -79,7 +79,7 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
                 tempoParaMudar = 20.0 / val;
                 
                 double fatorVelocidade = val / 50.0;
-                label.setText( String.format( "Velocidade: %.1fx", fatorVelocidade ) );                
+                label.setText( String.format( "Velocidade: %.1fx", fatorVelocidade ) );
             } 
         });
         
@@ -144,9 +144,9 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
         
         clearBackground( WHITE );
         desenharEstadoOrdenacao( copias.get(copiaAtual) );
-        drawText( String.format( "Tempo rodando: %.2f", tempoRodando ), 10, 10, Color.BLACK );
-        drawText( String.format( "%s", textoStatus ), getScreenWidth() - 130, getScreenHeight() / 2, Color.BLACK );
-        drawText( "[R] - Reiniciar", getScreenWidth() - 130, getScreenHeight() / 2+10, Color.BLACK );
+        drawText( String.format( "Tempo rodando: %.2f", tempoRodando ), 10, 10, 20, Color.BLACK );
+        drawText( String.format( "%s", textoStatus ), getScreenWidth() - 142, getScreenHeight() / 2, 12, Color.BLACK );
+        drawText( "[R] - Reiniciar", getScreenWidth() - 142, getScreenHeight() / 2+10, 12, Color.BLACK );
         
     }
     
@@ -180,7 +180,7 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
         int iniX = 10;
         int iniY = getScreenHeight() - 10;
         
-        int larguraDisponivel = getScreenWidth() - (iniX * 14);
+        int larguraDisponivel = getScreenWidth() - (iniX * 15);
         int tamanho = (larguraDisponivel - (espacamento * (numeroElementos - 1))) / numeroElementos;
         double escalaAltura = 3.5;
         
