@@ -30,7 +30,7 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
     private double contadorTempo;
     private JSlider slide;
     private JLabel label;
-    private JLabel lblStatus;
+    private String textoStatus = "[ESPACO] | Pausar";
     private boolean estaPausado = false;
     private boolean espacoPressionado = false;
     private double tempoRodando;
@@ -51,9 +51,9 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
             estaPausado = !estaPausado;
             
             if( estaPausado ){
-                lblStatus.setText("| Pausado (Aperte ESPACO para Continuar)");
+                textoStatus = "[ESPACO] | Continuar";
             }else{
-                lblStatus.setText("| Rodando (Aperte ESPACO para Pausar)");
+                textoStatus = "[ESPACO] | Pausar";
             }
     }
     
@@ -85,17 +85,10 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
         
         painelControles.add( slide );
         painelControles.add( label );
-        
-        // Lógica do Botão
-        
-        lblStatus = new JLabel(" | [ESPACO]: Rodando (Aperte para Pausar)");
-        painelControles.add(lblStatus);
           
         getContentPane().add( painelControles, BorderLayout.SOUTH );
         
     }
-    
-
     
     // Funções do JSGE
     @Override
@@ -152,6 +145,8 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
         clearBackground( WHITE );
         desenharEstadoOrdenacao( copias.get(copiaAtual) );
         drawText( String.format( "Tempo rodando: %.2f", tempoRodando ), 10, 10, Color.BLACK );
+        drawText( String.format( "%s", textoStatus ), getScreenWidth() - 130, getScreenHeight() / 2, Color.BLACK );
+        drawText( "[R] - Reiniciar", getScreenWidth() - 130, getScreenHeight() / 2+10, Color.BLACK );
         
     }
     
@@ -185,7 +180,7 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
         int iniX = 10;
         int iniY = getScreenHeight() - 10;
         
-        int larguraDisponivel = getScreenWidth() - (iniX * 2);
+        int larguraDisponivel = getScreenWidth() - (iniX * 14);
         int tamanho = (larguraDisponivel - (espacamento * (numeroElementos - 1))) / numeroElementos;
         double escalaAltura = 3.5;
         

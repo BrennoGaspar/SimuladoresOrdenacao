@@ -163,7 +163,7 @@ public class Main extends javax.swing.JFrame {
         try{
             String valor = JOptionPane.showInputDialog( "Quantidade de elementos (10 a 50): " );
             int quantidade = Integer.parseInt( valor );
-            if( quantidade >= 10 && quantidade <= 100 ) {
+            if( quantidade >= 10 && quantidade <= 50 ) {
                 numeroElementos = quantidade;
                 SelectionSort ss = new SelectionSort( numeroElementos );
                 ss.create();
