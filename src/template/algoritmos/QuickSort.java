@@ -5,7 +5,7 @@ import template.ui.EstadoOrdenacao;
 import template.ui.SimuladorOrdenacaoBase;
 
 /**
- * Simuladores de algoritmos de ordenação
+ * Simuladores do algoritmo Quick Sort
  * 
  * @author Brenno Gaspar Pinto & Victor Altran Soares
  */
@@ -32,6 +32,7 @@ public class QuickSort extends SimuladorOrdenacaoBase {
         
     }
     
+    // Algoritmo de Ordenação Quick Sort
     private void quickSort ( int[] a, int inicio, int fim, List<EstadoOrdenacao> copias ) {
         
         salvarEstadoOrdenacao( a, copias, -1, -1, -1 );

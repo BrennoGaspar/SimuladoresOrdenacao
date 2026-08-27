@@ -16,8 +16,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
- *
- * @author driog
+ * Menu base do sistema, usado por todas as outras classes.
+ * 
+ * @author Brenno Gaspar Pinto & Victor Altran Soares
  */
 public abstract class SimuladorOrdenacaoBase extends EngineFrame {
     
@@ -42,51 +43,6 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
         this.numeroElementos = numeroElementos;
         setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         sliderVelocidade();
-        
-    }
-    
-    
-    // Lógica do pause
-    private void ativarPause(){
-            estaPausado = !estaPausado;
-            
-            if( estaPausado ){
-                textoStatus = "[ESPACO] | Continuar";
-            }else{
-                textoStatus = "[ESPACO] | Pausar";
-            }
-    }
-    
-    
-    // Slider de Controle de Velocidade 
-    private void sliderVelocidade() {
-        
-        JPanel painelControles = new JPanel();
-        
-        slide = new JSlider( 5, 500, 50 );
-        // Arrumado erro de não funcionar o resetar() após mexer na velocidade
-        slide.setFocusable(false);
-        slide.setPaintLabels( false );
-        slide.setPaintTicks( true );
-        
-        label = new JLabel( "Velocidade: 1.0x" );
-        
-        slide.addChangeListener( new ChangeListener() {
-            @Override
-            public void stateChanged( ChangeEvent e ) {
-                int val = slide.getValue();
-                
-                tempoParaMudar = 20.0 / val;
-                
-                double fatorVelocidade = val / 50.0;
-                label.setText( String.format( "Velocidade: %.1fx", fatorVelocidade ) );
-            } 
-        });
-        
-        painelControles.add( slide );
-        painelControles.add( label );
-          
-        getContentPane().add( painelControles, BorderLayout.SOUTH );
         
     }
     
@@ -150,11 +106,55 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
         
     }
     
-    // Funções secundárias
+    // Lógica do pause
+    private void ativarPause(){
+            estaPausado = !estaPausado;
+            
+            if( estaPausado ){
+                textoStatus = "[ESPACO] | Continuar";
+            }else{
+                textoStatus = "[ESPACO] | Pausar";
+            }
+    }
+    
+    // Slider de Controle de Velocidade 
+    private void sliderVelocidade() {
+        
+        JPanel painelControles = new JPanel();
+        
+        slide = new JSlider( 5, 500, 50 );
+        // Arrumado erro de não funcionar o resetar() após mexer na velocidade
+        slide.setFocusable(false);
+        slide.setPaintLabels( false );
+        slide.setPaintTicks( true );
+        
+        label = new JLabel( "Velocidade: 1.0x" );
+        
+        slide.addChangeListener( new ChangeListener() {
+            @Override
+            public void stateChanged( ChangeEvent e ) {
+                int val = slide.getValue();
+                
+                tempoParaMudar = 20.0 / val;
+                
+                double fatorVelocidade = val / 50.0;
+                label.setText( String.format( "Velocidade: %.1fx", fatorVelocidade ) );
+            } 
+        });
+        
+        painelControles.add( slide );
+        painelControles.add( label );
+          
+        getContentPane().add( painelControles, BorderLayout.SOUTH );
+        
+    }
+    
+    // Funções abstratas para implementar de forma individual em cada algoritmo
     protected abstract void executarAlgoritmo( int[] a, List<EstadoOrdenacao> copias );
     
     protected abstract void salvarEstadoOrdenacao ( int[] origem, List<EstadoOrdenacao> copias, int posI, int posJ, int posMenor );
     
+    // Funções genéricas para todos algoritmos
     private void resetar (){
         
         gerarArray( a, numeroElementos );

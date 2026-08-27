@@ -5,7 +5,7 @@ import template.ui.EstadoOrdenacao;
 import template.ui.SimuladorOrdenacaoBase;
 
 /**
- * Simuladores de algoritmos de ordenação
+ * Simuladores do algoritmo Heap Sort
  * 
  * @author Brenno Gaspar Pinto & Victor Altran Soares
  */
@@ -32,6 +32,7 @@ public class HeapSort extends SimuladorOrdenacaoBase {
         
     }
     
+    // // Algoritmo de Ordenação Heap Sort
     private void afundar ( int[] a, int k, int n, List<EstadoOrdenacao> copias ) {
         
         while( 2*k + 1 < n ) {

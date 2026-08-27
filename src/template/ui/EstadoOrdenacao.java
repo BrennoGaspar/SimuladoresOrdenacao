@@ -1,8 +1,9 @@
 package template.ui;
 
 /**
- *
- * @author driog
+ * Classe EstadoOrdenacao para ser utilizada nas demais classes
+ * 
+ * @author Brenno Gaspar Pinto & Victor Altran Soares
  */
 public class EstadoOrdenacao {
     

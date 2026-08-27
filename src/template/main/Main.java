@@ -10,8 +10,9 @@ import javax.swing.JOptionPane;
 import template.algoritmos.ShellSort;
 
 /**
- *
- * @author driog
+ * Menu principal do sistema, com todos os algoritmos de ordenação que o projeto aborda.
+ * 
+ * @author Brenno Gaspar Pinto & Victor Altran Soares
  */
 public class Main extends javax.swing.JFrame {
     

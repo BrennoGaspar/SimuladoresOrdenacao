@@ -5,7 +5,7 @@ import template.ui.EstadoOrdenacao;
 import template.ui.SimuladorOrdenacaoBase;
 
 /**
- * Simuladores de algoritmos de ordenação
+ * Simuladores do algoritmo Selection Sort
  * 
  * @author Brenno Gaspar Pinto & Victor Altran Soares
  */
@@ -32,7 +32,7 @@ public class SelectionSort extends SimuladorOrdenacaoBase {
         
     }
     
-    // Funções necessárias
+    // Algoritmo de Ordenação Selection Sort
     private void selectionSort ( int[] a, List<EstadoOrdenacao> copias ) {
         
         salvarEstadoOrdenacao( a, copias, -1, -1, -1 );

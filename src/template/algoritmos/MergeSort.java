@@ -5,7 +5,7 @@ import template.ui.EstadoOrdenacao;
 import template.ui.SimuladorOrdenacaoBase;
 
 /**
- * Simuladores de algoritmos de ordenação
+ * Simuladores do algoritmo Merge Sort
  * 
  * @author Brenno Gaspar Pinto & Victor Altran Soares
  */
@@ -32,6 +32,7 @@ public class MergeSort extends SimuladorOrdenacaoBase {
         
     }
     
+    // Algoritmo de Ordenação Merge Sort
     private void mergeSort ( int[] a, int inicio, int fim, List<EstadoOrdenacao> copias ) {
         
         if( inicio < fim ) {

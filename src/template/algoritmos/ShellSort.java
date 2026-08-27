@@ -5,7 +5,7 @@ import template.ui.EstadoOrdenacao;
 import template.ui.SimuladorOrdenacaoBase;
 
 /**
- * Simuladores de algoritmos de ordenação
+ * Simuladores do algoritmo Shell Sort
  * 
  * @author Brenno Gaspar Pinto & Victor Altran Soares
  */
@@ -32,6 +32,7 @@ public class ShellSort extends SimuladorOrdenacaoBase {
         
     }
     
+    // Algoritmo de Ordenação Shell Sort
     private void shellSort ( int[] a, List<EstadoOrdenacao> copias ) {
         
         salvarEstadoOrdenacao( a, copias, -1, -1, -1 );
