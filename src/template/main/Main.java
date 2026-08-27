@@ -7,6 +7,7 @@ import template.algoritmos.MergeSort;
 import template.algoritmos.InsertionSort;
 import template.algoritmos.QuickSort;
 import javax.swing.JOptionPane;
+import template.algoritmos.ShellSort;
 
 /**
  *
@@ -44,6 +45,7 @@ public class Main extends javax.swing.JFrame {
         QuickSort = new javax.swing.JButton();
         MergeSort = new javax.swing.JButton();
         HeapSort = new javax.swing.JButton();
+        ShellSort = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Simuladores Ordenação");
@@ -106,6 +108,14 @@ public class Main extends javax.swing.JFrame {
         });
         HeapSort.addActionListener(this::HeapSortActionPerformed);
 
+        ShellSort.setText("ShellSort");
+        ShellSort.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ShellSortMouseClicked(evt);
+            }
+        });
+        ShellSort.addActionListener(this::ShellSortActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,18 +125,21 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BubbleSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(QuickSort, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(InsertionSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(SelectionSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(MergeSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(HeapSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(68, 68, 68)
                                 .addComponent(Quadraticos))
-                            .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(QuickSort, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                                    .addComponent(BubbleSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ShellSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(InsertionSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(300, 300, 300))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(LinearesLogaritmos)
@@ -146,7 +159,9 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(InsertionSort)
                     .addComponent(QuickSort))
                 .addGap(18, 18, 18)
-                .addComponent(BubbleSort)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BubbleSort)
+                    .addComponent(ShellSort))
                 .addGap(29, 29, 29)
                 .addComponent(LinearesLogaritmos)
                 .addGap(18, 18, 18)
@@ -279,6 +294,26 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_HeapSortActionPerformed
 
+    private void ShellSortMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShellSortMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShellSortMouseClicked
+
+    private void ShellSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShellSortActionPerformed
+        try{
+            String valor = JOptionPane.showInputDialog( "Quantidade de elementos (10 a 50): " );
+            int quantidade = Integer.parseInt( valor );
+            if( quantidade >= 10 && quantidade <= 50 ) {
+                numeroElementos = quantidade;
+                ShellSort ss = new ShellSort( numeroElementos );
+                ss.create();
+            } else {
+                JOptionPane.showMessageDialog( rootPane, "Digite um valor de 10 a 50" );
+            }
+        } catch ( NumberFormatException exc ) {
+            JOptionPane.showMessageDialog( rootPane, exc );
+        }
+    }//GEN-LAST:event_ShellSortActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -313,6 +348,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel Quadraticos;
     private javax.swing.JButton QuickSort;
     private javax.swing.JButton SelectionSort;
+    private javax.swing.JButton ShellSort;
     private javax.swing.JLabel Titulo;
     // End of variables declaration//GEN-END:variables
 }

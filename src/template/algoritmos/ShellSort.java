@@ -43,9 +43,14 @@ public class ShellSort extends SimuladorOrdenacaoBase {
         while( h >= 1 ){
             for( int i = h; i < a.length; i++ ) {
                 int j = i;
+                
+                if (j >= h) {
+                    salvarEstadoOrdenacao( a, copias, i, j - h, j );
+                }
+                
                 while( j >= h && a[j-h] > a[j] ) {
                     trocar( a, j-h, j );
-                    salvarEstadoOrdenacao( a, copias, i, j, h );
+                    salvarEstadoOrdenacao( a, copias, i, j, j-h );
                     j = j - h;
                 }
             }

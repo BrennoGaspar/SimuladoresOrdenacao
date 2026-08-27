@@ -36,12 +36,6 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="BubbleSort" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="QuickSort" min="-2" pref="94" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="InsertionSort" max="32767" attributes="0"/>
-                          </Group>
                           <Component id="SelectionSort" alignment="0" max="32767" attributes="0"/>
                           <Component id="MergeSort" alignment="0" max="32767" attributes="0"/>
                           <Component id="HeapSort" max="32767" attributes="0"/>
@@ -50,6 +44,17 @@
                               <Component id="Quadraticos" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="Titulo" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="QuickSort" pref="94" max="32767" attributes="0"/>
+                                  <Component id="BubbleSort" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="ShellSort" max="32767" attributes="0"/>
+                                  <Component id="InsertionSort" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
                   </Group>
@@ -76,7 +81,10 @@
                   <Component id="QuickSort" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="BubbleSort" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="BubbleSort" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ShellSort" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="LinearesLogaritmos" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -157,6 +165,15 @@
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="HeapSortMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HeapSortActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="ShellSort">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ShellSort"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ShellSortMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ShellSortActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
