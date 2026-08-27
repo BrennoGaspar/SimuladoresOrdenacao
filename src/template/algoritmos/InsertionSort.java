@@ -1,7 +1,5 @@
 package template.algoritmos;
 
-import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
-import java.util.ArrayList;
 import java.util.List;
 import template.ui.EstadoOrdenacao;
 import template.ui.SimuladorOrdenacaoBase;

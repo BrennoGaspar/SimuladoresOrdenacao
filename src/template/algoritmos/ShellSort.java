@@ -1,6 +1,5 @@
 package template.algoritmos;
 
-import java.util.ArrayList;
 import java.util.List;
 import template.ui.EstadoOrdenacao;
 import template.ui.SimuladorOrdenacaoBase;
