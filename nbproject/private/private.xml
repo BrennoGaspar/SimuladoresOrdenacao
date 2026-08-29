@@ -4,13 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/driog/Desktop/SimuladoresOrdenacao/src/template/algoritmos/HeapSort.java</file>
+            <file>file:/C:/Users/driog/Desktop/SimuladoresOrdenacao/src/template/algoritmos/HeapSortDesenho.java</file>
             <file>file:/C:/Users/driog/Desktop/SimuladoresOrdenacao/src/template/ui/SimuladorOrdenacaoBase.java</file>
-            <file>file:/C:/Users/driog/Desktop/SimuladoresOrdenacao/src/template/algoritmos/BubbleSort.java</file>
-            <file>file:/C:/Users/driog/Desktop/SimuladoresOrdenacao/src/template/algoritmos/InsertionSort.java</file>
-            <file>file:/C:/Users/driog/Desktop/SimuladoresOrdenacao/src/template/algoritmos/MergeSort.java</file>
-            <file>file:/C:/Users/driog/Desktop/SimuladoresOrdenacao/src/template/algoritmos/QuickSort.java</file>
-            <file>file:/C:/Users/driog/Desktop/SimuladoresOrdenacao/src/template/algoritmos/SelectionSort.java</file>
-            <file>file:/C:/Users/driog/Desktop/SimuladoresOrdenacao/src/template/algoritmos/ShellSort.java</file>
+            <file>file:/C:/Users/driog/Desktop/SimuladoresOrdenacao/src/template/ui/EstadoOrdenacao.java</file>
             <file>file:/C:/Users/driog/Desktop/SimuladoresOrdenacao/src/template/main/Main.java</file>
         </group>
     </open-files>

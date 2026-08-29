@@ -1,5 +1,6 @@
 package template.algoritmos;
 
+import java.util.ArrayList;
 import java.util.List;
 import template.ui.EstadoOrdenacao;
 import template.ui.SimuladorOrdenacaoBase;
@@ -18,9 +19,9 @@ public class HeapSort extends SimuladorOrdenacaoBase {
 
     // Implementação dos métodos abstratos
     @Override
-    protected void executarAlgoritmo(int[] a, List<EstadoOrdenacao> copias) {
+    protected void executarAlgoritmo( int[] a, List<EstadoOrdenacao> copias ) {
         heapSort( a, copias );
-    }    
+    }
     
     @Override
     protected void salvarEstadoOrdenacao ( int[] origem, List<EstadoOrdenacao> copias, int posI, int posJ, int posMenor ) {
@@ -32,7 +33,7 @@ public class HeapSort extends SimuladorOrdenacaoBase {
         
     }
     
-    // // Algoritmo de Ordenação Heap Sort
+    // Algoritmo de Ordenação Heap Sort
     private void afundar ( int[] a, int k, int n, List<EstadoOrdenacao> copias ) {
         
         while( 2*k + 1 < n ) {

@@ -225,4 +225,13 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
         
     }
     
+    // Getters
+    public EstadoOrdenacao getEstadoAtual() {
+        if (copias != null && !copias.isEmpty() && copiaAtual < copias.size()) {
+            return copias.get(copiaAtual);
+        }
+        return null;
+    }
+    
+    
 }

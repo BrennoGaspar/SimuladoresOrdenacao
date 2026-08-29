@@ -7,6 +7,7 @@ import template.algoritmos.MergeSort;
 import template.algoritmos.InsertionSort;
 import template.algoritmos.QuickSort;
 import javax.swing.JOptionPane;
+import template.algoritmos.HeapSortDesenho;
 import template.algoritmos.ShellSort;
 
 /**
@@ -287,6 +288,8 @@ public class Main extends javax.swing.JFrame {
                 numeroElementos = quantidade;
                 HeapSort hs = new HeapSort( numeroElementos );
                 hs.create();
+                HeapSortDesenho hsd = new HeapSortDesenho( hs );
+                hsd.create();
             } else {
                 JOptionPane.showMessageDialog( rootPane, "Digite um valor de 10 a 50" );
             }
