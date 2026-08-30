@@ -1,4 +1,4 @@
-package template.ui;
+package UI;
 
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
 import static br.com.davidbuzatto.jsge.core.engine.EngineFrame.KEY_R;
@@ -194,7 +194,8 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
                 altura,  // altura
                 Color.BLUE
             );
-            
+            // Texto adicionado mostrando os valores de cada elemento do array (cada barra)
+            drawText( String.format("%d", v), iniX + i * (tamanho + espacamento) + tamanho / 2 - 5, iniY - altura - 10, BLACK );
         }
         
         desenharBolinhas( a, tamanho, escalaAltura, 5,  espacamento, iniX, iniY, e.getI(), Color.RED );
@@ -209,7 +210,7 @@ public abstract class SimuladorOrdenacaoBase extends EngineFrame {
             int alturaBarra = (int) (a[variavel] * escalaAltura);
             fillCircle( 
                 iniX + variavel * (tamanho + espacamento) + tamanho / 2,
-                iniY - alturaBarra - espaco,
+                iniY - alturaBarra - espaco - 15,
                 5,
                 cor
             );

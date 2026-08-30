@@ -1,14 +1,14 @@
-package template.main;
+package main;
 
-import template.algoritmos.HeapSort;
-import template.algoritmos.BubbleSort;
-import template.algoritmos.SelectionSort;
-import template.algoritmos.MergeSort;
-import template.algoritmos.InsertionSort;
-import template.algoritmos.QuickSort;
+import algoritmos.HeapSort;
+import algoritmos.BubbleSort;
+import algoritmos.SelectionSort;
+import algoritmos.MergeSort;
+import algoritmos.InsertionSort;
+import algoritmos.QuickSort;
 import javax.swing.JOptionPane;
-import template.algoritmos.HeapSortDesenho;
-import template.algoritmos.ShellSort;
+import desenhos.HeapSortDesenho;
+import algoritmos.ShellSort;
 
 /**
  * Menu principal do sistema, com todos os algoritmos de ordenação que o projeto aborda.

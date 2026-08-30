@@ -1,4 +1,4 @@
-package template.ui;
+package UI;
 
 /**
  * Classe EstadoOrdenacao para ser utilizada nas demais classes

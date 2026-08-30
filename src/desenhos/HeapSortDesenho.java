@@ -1,10 +1,10 @@
-package template.algoritmos;
+package desenhos;
 
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
 import java.util.ArrayList;
 import java.util.List;
-import template.ui.EstadoOrdenacao;
-import template.ui.SimuladorOrdenacaoBase;
+import UI.EstadoOrdenacao;
+import UI.SimuladorOrdenacaoBase;
 
 /**
  * Desenho da árvore binária do Heap Sort
@@ -22,7 +22,7 @@ public class HeapSortDesenho extends EngineFrame {
     
     // Construtor
     public HeapSortDesenho ( SimuladorOrdenacaoBase simulador ) {
-        super( 800, 450, "Heap Sort Desenho", 60, true );
+        super( 900, 450, "Heap Sort Desenho", 60, true );
         this.simulador = simulador;
     }
     

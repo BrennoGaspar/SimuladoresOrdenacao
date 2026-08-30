@@ -1,9 +1,9 @@
-package template.algoritmos;
+package algoritmos;
 
 import java.util.ArrayList;
 import java.util.List;
-import template.ui.EstadoOrdenacao;
-import template.ui.SimuladorOrdenacaoBase;
+import UI.EstadoOrdenacao;
+import UI.SimuladorOrdenacaoBase;
 
 /**
  * Simuladores do algoritmo Heap Sort
