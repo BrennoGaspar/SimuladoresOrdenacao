@@ -40,5 +40,5 @@ Representar graficamente a execução passo a passo dos principais algoritmos de
 <img width="800" height="350" alt="image" src="https://github.com/user-attachments/assets/ae6f4f53-a02a-45a4-aba8-f3283b14cc25" />
 
 ## 👨‍💻 Autores
-- Brenno Gaspar Pint
+- Brenno Gaspar Pinto
 - Victor Altran Soares
