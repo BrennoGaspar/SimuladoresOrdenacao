@@ -2,9 +2,9 @@ package desenhos;
 
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
 import java.util.ArrayList;
-import java.util.List;
 import UI.EstadoOrdenacao;
 import UI.SimuladorOrdenacaoBase;
+import java.awt.Color;
 
 /**
  * Desenho da árvore binária do Heap Sort
@@ -16,6 +16,10 @@ public class HeapSortDesenho extends EngineFrame {
     // Variáveis
     private SimuladorOrdenacaoBase simulador;
     ArrayList<Posicao> grafos = new ArrayList<>();
+    private static final Color COR_FUNDO = new Color( 24, 28, 36 );
+    private static final Color COR_NOS = new Color( 220, 225, 235 );
+    private static final Color COR_PONTEIRO_I = new Color( 255, 99, 132 );
+    private static final Color COR_PONTEIRO_J = new Color( 46, 204, 113 );
     
     // Record
     private record Posicao( int x, int y ){};
@@ -29,7 +33,7 @@ public class HeapSortDesenho extends EngineFrame {
     @Override
     public void draw() {
         
-        clearBackground( WHITE );
+        clearBackground( COR_FUNDO );
         
         EstadoOrdenacao e = simulador.getEstadoAtual();
 
@@ -56,7 +60,7 @@ public class HeapSortDesenho extends EngineFrame {
                 Posicao pai = grafos.get( i );
                 Posicao filhoEsq = new Posicao( pai.x - deslocamentoXEsq, pai.y + 50 );
 
-                drawLine( pai.x, pai.y, filhoEsq.x, filhoEsq.y, BLACK );
+                drawLine( pai.x, pai.y, filhoEsq.x, filhoEsq.y, COR_NOS );
                 grafos.add( filhoEsq );
             }
 
@@ -68,7 +72,7 @@ public class HeapSortDesenho extends EngineFrame {
                 Posicao pai = grafos.get( i );
                 Posicao filhoDir = new Posicao( pai.x + deslocamentoXDir, pai.y + 50 );
 
-                drawLine( pai.x, pai.y, filhoDir.x, filhoDir.y, BLACK );
+                drawLine( pai.x, pai.y, filhoDir.x, filhoDir.y, COR_NOS );
                 grafos.add( filhoDir );
             }
         }
@@ -78,15 +82,15 @@ public class HeapSortDesenho extends EngineFrame {
             Posicao p = grafos.get( i );
 
             if ( i == e.getI() ) {
-                fillCircle( p.x, p.y, raio, RED );
+                fillCircle( p.x, p.y, raio, COR_PONTEIRO_I );
             } else if ( i == e.getJ() ) {
-                fillCircle( p.x, p.y, raio, GREEN );
+                fillCircle( p.x, p.y, raio, COR_PONTEIRO_J );
             } else {
-                fillCircle( p.x, p.y, raio, WHITE );
+                fillCircle( p.x, p.y, raio, COR_NOS );
             }
 
             drawCircle( p.x, p.y, raio, BLACK );
-            drawText( String.format("%d", vetorAtual[i]), p.x - 5, p.y - 4, BLACK );
+            drawText( String.format("%d", vetorAtual[i]), p.x - 7, p.y - 4, 13, BLACK );
         }
     }
     

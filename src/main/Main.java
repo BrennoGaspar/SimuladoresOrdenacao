@@ -27,6 +27,7 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground( new java.awt.Color(24, 28, 36) );
     }
 
     /**
@@ -55,13 +56,22 @@ public class Main extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 0));
         setResizable(false);
 
+        Titulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(220, 225, 235));
         Titulo.setText("Simuladores de Ordenação de Arrays");
         Titulo.setToolTipText("");
 
+        Quadraticos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Quadraticos.setForeground(new java.awt.Color(220, 225, 235));
         Quadraticos.setText("Quadráticos");
 
+        LinearesLogaritmos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LinearesLogaritmos.setForeground(new java.awt.Color(220, 225, 235));
         LinearesLogaritmos.setText("Lineares Logarítmos");
 
+        SelectionSort.setBackground(new java.awt.Color(33, 38, 49));
+        SelectionSort.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        SelectionSort.setForeground(new java.awt.Color(255, 255, 255));
         SelectionSort.setText("Selection Sort");
         SelectionSort.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -70,6 +80,9 @@ public class Main extends javax.swing.JFrame {
         });
         SelectionSort.addActionListener(this::SelectionSortActionPerformed);
 
+        InsertionSort.setBackground(new java.awt.Color(33, 38, 49));
+        InsertionSort.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        InsertionSort.setForeground(new java.awt.Color(255, 255, 255));
         InsertionSort.setText("Insertion Sort");
         InsertionSort.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -78,6 +91,9 @@ public class Main extends javax.swing.JFrame {
         });
         InsertionSort.addActionListener(this::InsertionSortActionPerformed);
 
+        BubbleSort.setBackground(new java.awt.Color(33, 38, 49));
+        BubbleSort.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        BubbleSort.setForeground(new java.awt.Color(255, 255, 255));
         BubbleSort.setText("Bubble Sort");
         BubbleSort.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -86,6 +102,9 @@ public class Main extends javax.swing.JFrame {
         });
         BubbleSort.addActionListener(this::BubbleSortActionPerformed);
 
+        QuickSort.setBackground(new java.awt.Color(33, 38, 49));
+        QuickSort.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        QuickSort.setForeground(new java.awt.Color(255, 255, 255));
         QuickSort.setText("Quick Sort");
         QuickSort.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -94,6 +113,9 @@ public class Main extends javax.swing.JFrame {
         });
         QuickSort.addActionListener(this::QuickSortActionPerformed);
 
+        MergeSort.setBackground(new java.awt.Color(33, 38, 49));
+        MergeSort.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        MergeSort.setForeground(new java.awt.Color(255, 255, 255));
         MergeSort.setText("Merge Sort");
         MergeSort.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -102,6 +124,9 @@ public class Main extends javax.swing.JFrame {
         });
         MergeSort.addActionListener(this::MergeSortActionPerformed);
 
+        HeapSort.setBackground(new java.awt.Color(33, 38, 49));
+        HeapSort.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        HeapSort.setForeground(new java.awt.Color(255, 255, 255));
         HeapSort.setText("Heap Sort");
         HeapSort.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -110,6 +135,9 @@ public class Main extends javax.swing.JFrame {
         });
         HeapSort.addActionListener(this::HeapSortActionPerformed);
 
+        ShellSort.setBackground(new java.awt.Color(33, 38, 49));
+        ShellSort.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ShellSort.setForeground(new java.awt.Color(255, 255, 255));
         ShellSort.setText("ShellSort");
         ShellSort.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -123,54 +151,60 @@ public class Main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(300, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(SelectionSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(MergeSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(HeapSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(203, 203, 203)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(InsertionSort, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(QuickSort, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BubbleSort, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SelectionSort, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(310, 310, 310)
+                        .addComponent(ShellSort, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(301, 301, 301)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LinearesLogaritmos, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(68, 68, 68)
-                                .addComponent(Quadraticos))
-                            .addComponent(Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(QuickSort, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                                    .addComponent(BubbleSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ShellSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(InsertionSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(300, 300, 300))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(LinearesLogaritmos)
-                        .addGap(343, 343, 343))))
+                                    .addComponent(HeapSort, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(MergeSort, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(333, 333, 333)
+                        .addComponent(Quadraticos))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(178, 178, 178)
+                        .addComponent(Titulo)))
+                .addContainerGap(199, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(34, 34, 34)
                 .addComponent(Titulo)
                 .addGap(18, 18, 18)
                 .addComponent(Quadraticos)
-                .addGap(18, 18, 18)
-                .addComponent(SelectionSort)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SelectionSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(InsertionSort))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(InsertionSort)
-                    .addComponent(QuickSort))
+                    .addComponent(QuickSort)
+                    .addComponent(BubbleSort))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BubbleSort)
-                    .addComponent(ShellSort))
-                .addGap(29, 29, 29)
+                .addComponent(ShellSort)
+                .addGap(18, 18, 18)
                 .addComponent(LinearesLogaritmos)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(MergeSort)
                 .addGap(18, 18, 18)
                 .addComponent(HeapSort)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
 
         pack();
